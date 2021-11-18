@@ -6,20 +6,22 @@ Beats 100% of Java Submissions.
 */
 class Solution {
     public List<Integer> findDisappearedNumbers(int[] nums) {
-        HashSet<Integer> set = new HashSet<>(); // map all nums to hashset
+        //Create a boolean array to mark all the seen nums
+        boolean[] seen = new boolean[nums.length+1];
         for(int i : nums)
         {
-            set.add(i);
+            seen[i] = true; //mark the num as seen
         }
-        //2 loop from i -> nums.length and check if each increment is in the set
+        // Create a list of all unseen.
         List<Integer> res = new ArrayList<>();
-        for(int i = 1; i <= nums.length; i ++)
+        for(int i = 1; i < seen.length; i++)
         {
-            if(!set.contains(i))
+            if(!seen[i])
             {
                 res.add(i);
             }
         }
         return res;
+        
     }
 }
